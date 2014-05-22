@@ -72,7 +72,7 @@ function message()
             console.log(data[i]);
             text += data[i] + "<br>";
         }
-        document.getElementById("chatScreen").innerHTML += text;
+//        document.getElementById("chatScreen").innerHTML += text;
         document.getElementById("textarea").value = "";
         document.getElementById("chatScreen").scrollTop = document.getElementById("chatScreen").scrollHeight;
     });
@@ -102,7 +102,7 @@ function getMessages() {
             console.log(data[i]);
             text += data[i] + "<br>";
         }
-        document.getElementById("chatScreen").innerHTML += text;
+        document.getElementById("chatScreen").innerHTML = text;
         document.getElementById("chatScreen").scrollTop = document.getElementById("chatScreen").scrollHeight;
     });
 }
