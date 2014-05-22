@@ -64,19 +64,19 @@ function openListFriend(){
 function message()
 {
     var text = "";
-    myurl = 'http://localhost:1337/messages/sendMessage?username1=emerson&username2=jean&msg='+ document.getElementById("textarea").value ;
+    myurl = 'http://istimchatapi.nodejitsu.com/messages/sendMessage?username1=emerson&username2=jean&msg='+ document.getElementById("textarea").value ;
     $.get(myurl,function(data, status){
         //console.log(data);
-        
-       for(var i=0; i < data.length;i++){
-           console.log(data[i]);
+
+        for(var i=0; i < data.length;i++){
+            console.log(data[i]);
             text += data[i] + "<br>";
-       }
-       document.getElementById("chatScreen").innerHTML += text;
-       document.getElementById("textarea").value = "";
-       document.getElementById("chatScreen").scrollTop = document.getElementById("chatScreen").scrollHeight;
+        }
+        document.getElementById("chatScreen").innerHTML += text;
+        document.getElementById("textarea").value = "";
+        document.getElementById("chatScreen").scrollTop = document.getElementById("chatScreen").scrollHeight;
     });
-    
+
     /* var request = require('request');
     request('http://localhost:1337/messages/sendMessage?username1=emerson&username2=admin&msg=asdf', function (error, response, body) {
         if (!error && response.statusCode == 200) { 
@@ -87,11 +87,27 @@ function message()
             return res.send(404, 'recurso não encontrado');
         }
     });*/
-    
-    
-    
+
+
+
 }
 
+function getMessages() {
+    var text = "";
+    myurl = 'http://istimchatapi.nodejitsu.com/messages/getMessages?username1=emerson&username2=jean';
+    $.get(myurl,function(data, status){
+        //console.log(data);
+
+        for(var i=0; i < data.length;i++){
+            console.log(data[i]);
+            text += data[i] + "<br>";
+        }
+        document.getElementById("chatScreen").innerHTML += text;
+        document.getElementById("chatScreen").scrollTop = document.getElementById("chatScreen").scrollHeight;
+    });
+}
+
+setInterval(getMessages, 1000);
 
 //Loga
 function signIn(){
